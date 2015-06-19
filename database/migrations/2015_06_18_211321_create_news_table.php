@@ -17,8 +17,8 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('image');
-            $table->integer('category')->unsigned();
-            $table->foreign('category')->references('id')->on('category');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('news');
             $table->integer('likes');
             $table->integer('dislikes');
             $table->timestamps();

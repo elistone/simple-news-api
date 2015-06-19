@@ -13,7 +13,7 @@ class News extends Model
 	
 	protected $table 	= "news"; // set the table
 
-	protected $fillable = ['id','title','content','image','category','likes','dislikes','updated_at']; // set the fillable cols
+	protected $fillable = ['id','title','content','image','category_id','likes','dislikes','updated_at']; // set the fillable cols
 
 	protected $hidden 	= ['created_at']; // hide these
 

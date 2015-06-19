@@ -24,7 +24,7 @@ class NewsSeed extends Seeder
                 'title' => $faker->sentence(),
                 'content' => $faker->realText(),
                 'image' => $faker->imageUrl(),
-                'category' => $faker->numberBetween(1,3),
+                'category_id' => $faker->numberBetween(1,3),
                 'likes' => $faker->randomNumber(),
                 'dislikes' => $faker->randomNumber()
             ]);

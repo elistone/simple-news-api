@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\News;
+use App\Category;
+
 class CategoryNewsController extends Controller
 {
     /**
@@ -16,7 +19,17 @@ class CategoryNewsController extends Controller
      */
     public function index($id)
     {
-        return "showing id $id";
+        // find by $id
+        $category = Category::find($id);
+
+        // if no category found
+        if(!$category){
+            // set response as an error
+            return Response()->json(['message' => 'The category could not be found','code' => 404],404);
+        }
+
+        // set response as json with data
+        return Response()->json(['data' => $category->news,'code' => 200],200);
     }
 
     /**
