@@ -18,10 +18,12 @@ class CategorySeed extends Seeder
     {
         $faker = Faker::create();
 
-        for($i = 0; $i < 6; $i++){
+        $categorys = array('Tec','Science','Education','Entertainment & Arts');
+
+        for($i = 0; $i < count($categorys); $i++){
             Category::Create
             ([
-                'title' => $faker->name(),
+                'title' => $categorys[$i],
                 'description' => $faker->word()
 
             ]);

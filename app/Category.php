@@ -13,9 +13,9 @@ class Category extends Model
 	
 	protected $table 	= "category"; // set the table
 
-	protected $fillable = ['title','description']; // set the fillable cols
+	protected $fillable = ['id','title','description','updated_at']; // set the fillable cols
 
-	protected $hidden 	= ['id','created_at','updated_at']; // hide these
+	protected $hidden 	= ['created_at']; // hide these
 
 	// set has many news
 	public function news(){
