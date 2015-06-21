@@ -12,6 +12,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Category;
+use App\Http\Requests\CreateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -34,9 +35,16 @@ class CategoryController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(CreateCategoryRequest $request)
     {
+        // request look for title and description
+        $values = $request->only(['title','description']);
 
+        // create new category with values
+        Category::create($values);
+
+        // set response as json with data
+        return Response()->json(['message' => 'New category successfully added','code' => 201],201);
     }
 
     /**
