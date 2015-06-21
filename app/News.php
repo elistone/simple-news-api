@@ -1,21 +1,21 @@
 <?php namespace App;
+/**
+  * News
+  * 
+  * 
+  * @author ELI STONE <3li.stone@gmail.com>
+**/
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
-   * News
-   * 
-   * 
-   * @author ELI STONE <3li.stone@gmail.com>
-   */
 class News extends Model
 {
 	
-	protected $table 	= "news"; // set the table
+	protected $table 	= "news"; // set the table name
 
-	protected $fillable = ['id','title','content','image','category_id','likes','dislikes','updated_at']; // set the fillable cols
+	protected $fillable = ['id','title','content','image','likes','dislikes','updated_at']; // set the fillable columns 
 
-	protected $hidden 	= ['created_at']; // hide these
+	protected $hidden 	= ['created_at','category_id']; // hide these from being displayed
 
 	// set belongsTo
 	public function categorys(){

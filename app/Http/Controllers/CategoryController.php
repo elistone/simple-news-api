@@ -1,4 +1,10 @@
 <?php namespace App\Http\Controllers;
+/**
+  * CategoryController
+  * 
+  * 
+  * @author ELI STONE <3li.stone@gmail.com>
+**/
 
 use Illuminate\Http\Request;
 
@@ -10,7 +16,7 @@ use App\Category;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of categorys.
      *
      * @return Response
      */
@@ -23,11 +29,20 @@ class CategoryController extends Controller
         return Response()->json(['data' => $categorys,'code' => 200],200);
     }
 
+    /**
+     * Store a newly created news category.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+
+    }
 
     /**
-     * Display the specified resource.
+     * Display a specified category.
      *
-     * @param  int  $id
+     * @param  int  $id - id of a category
      * @return Response
      */
     public function show($id)
@@ -43,5 +58,27 @@ class CategoryController extends Controller
 
         // set response as json with data
         return Response()->json(['data' => $category,'code' => 200],200);
+    }
+
+    /**
+     * Update a specified category.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove a specified category.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

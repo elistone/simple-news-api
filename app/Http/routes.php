@@ -14,6 +14,6 @@
 Route::get('/', function () { return view('welcome');});
 
 //setup resource route to controllers
-Route::resource('category','CategoryController',['only' => ['index','show']]);
+Route::resource('category','CategoryController',['except' => ['create','edit']]);
 Route::resource('news','NewsController',['except' => ['create','edit']]);
 Route::resource('category.news','CategoryNewsController',['except' => ['create','edit']]);

@@ -1,4 +1,10 @@
 <?php namespace App\Http\Controllers;
+/**
+  * NewsController
+  * 
+  * 
+  * @author ELI STONE <3li.stone@gmail.com>
+**/
 
 use Illuminate\Http\Request;
 
@@ -10,7 +16,7 @@ use App\News;
 class NewsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the news articles.
      *
      * @return Response
      */
@@ -25,7 +31,7 @@ class NewsController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created news article.
      *
      * @return Response
      */
@@ -35,9 +41,9 @@ class NewsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified news article.
      *
-     * @param  int  $id
+     * @param  int  $id - id of a news artical
      * @return Response
      */
     public function show($id)
@@ -56,7 +62,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a specified news article.
      *
      * @param  int  $id
      * @return Response
@@ -67,7 +73,7 @@ class NewsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove a specified news article.
      *
      * @param  int  $id
      * @return Response

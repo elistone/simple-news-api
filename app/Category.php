@@ -1,19 +1,19 @@
 <?php namespace App;
+/**
+  * Category
+  * 
+  * 
+  * @author ELI STONE <3li.stone@gmail.com>
+**/
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
-   * Category
-   * 
-   * 
-   * @author ELI STONE <3li.stone@gmail.com>
-   */
 class Category extends Model
 {
 	
-	protected $table 	= "category"; // set the table
+	protected $table 	= "category"; // set the table name
 
-	protected $fillable = ['id','title','description','updated_at']; // set the fillable cols
+	protected $fillable = ['id','title','description','updated_at']; // set the fillable columns
 
 	protected $hidden 	= ['created_at']; // hide these
 
