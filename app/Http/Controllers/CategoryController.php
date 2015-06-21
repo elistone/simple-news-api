@@ -44,7 +44,7 @@ class CategoryController extends Controller
         Category::create($values);
 
         // set response as json with data
-        return Response()->json(['message' => 'New category successfully added','code' => 201],201);
+        return response()->json(['message' => 'New category successfully added','code' => 201],201);
     }
 
     /**

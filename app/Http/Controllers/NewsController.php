@@ -29,17 +29,6 @@ class NewsController extends Controller
         return Response()->json(['data' => $news,'code' => 200],200);
     }
 
-
-    /**
-     * Store a newly created news article.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
     /**
      * Display the specified news article.
      *
@@ -59,27 +48,5 @@ class NewsController extends Controller
 
         // set response as json with data
         return Response()->json(['data' => $news_item,'code' => 200],200);
-    }
-
-    /**
-     * Update a specified news article.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove a specified news article.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

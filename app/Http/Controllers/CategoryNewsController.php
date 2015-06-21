@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 
 use App\News;
 use App\Category;
+use App\Http\Requests\CreateNewsRequest;
 
 class CategoryNewsController extends Controller
 {
@@ -30,7 +31,7 @@ class CategoryNewsController extends Controller
         // if no category found
         if(!$category){
             // set response as an error
-            return Response()->json(['message' => 'The category could not be found','code' => 404],404);
+            return response()->json(['message' => 'The category could not be found','code' => 404],404);
         }
 
         // get all news from the found category
@@ -39,21 +40,39 @@ class CategoryNewsController extends Controller
         // if no news found
         if($news_all->isEmpty()){
             // set response as an error
-            return Response()->json(['message' => "No news could be found in category id: '$id'",'code' => 404],404);
+            return response()->json(['message' => "No news could be found in category id: '$id'",'code' => 404],404);
         }
 
         // set response as json with data
-        return Response()->json(['data' => $news_all,'code' => 200],200);
+        return response()->json(['data' => $news_all,'code' => 200],200);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly artical under a specific category.
      *
+     * @param  request(POST)  $request - request data
+     * @param  int  $catId - id of a category
      * @return Response
      */
-    public function store()
+    public function store(CreateNewsRequest $request,$catId)
     {
-        //
+        // find by $catId
+        $category = Category::find($catId);
+
+        // if no category found
+        if(!$category){
+            // set response as an error
+            return response()->json(['message' => 'The category could not be found','code' => 404],404);
+        }
+
+        // request look for specific post data
+        $values = $request->only(['title','content','url','image','likes','dislikes']);
+
+        // create the artical with the relationship 
+        $category->news()->create($values);
+
+        // set response as json with data
+        return response()->json(['message' => "News article created and added to category id '$catId' successfully",'code' => 201],201);
     }
 
     /**

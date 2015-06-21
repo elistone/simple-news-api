@@ -1,6 +1,6 @@
 <?php namespace App\Http\Requests;
 /**
-  * CreateCategoryRequest
+  * CreateNewsRequest
   * 
   * 
   * @author ELI STONE <3li.stone@gmail.com>
@@ -8,7 +8,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateCategoryRequest extends Request
+class CreateNewsRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,13 +28,15 @@ class CreateCategoryRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255',
-            'description' => 'string|max:255'
+            'title' => 'string|required|max:255',
+            'content' => 'string|max:65535|required',
+            'image' => 'string|max:255|url|required',
+            'likes' => 'integer|max:11|required',
+            'dislikes' => 'integer|max:11|required',
         ];
     }
 
-
-    /**
+     /**
      * Get the proper failed validation response for the request.
      *
      * @param  array  $errors
