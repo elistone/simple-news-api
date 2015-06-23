@@ -29,7 +29,7 @@ class CreateCategoryRequest extends Request
     {
         return [
             'title' => 'required|string|max:255',
-            'description' => 'string|max:255'
+            'description' => 'required|string|max:255'
         ];
     }
 

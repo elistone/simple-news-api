@@ -114,18 +114,55 @@ class CategoryNewsController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int  $catId - id of a category
+     * @param  int  $newsId - id of a news article, in the same category
      * @return Response
      */
-    public function update($id)
+    public function update(CreateNewsRequest $request,$catId,$newsId)
     {
-        //
+        // find by $catId
+        $category = Category::find($catId);
+
+        // if no category found
+        if(!$category){
+            // set response as an error
+            return Response()->json(['message' => 'The category could not be found','code' => 404],404);
+        }
+
+        // find news article from news
+        $news_item = $category->news->find($newsId);
+
+        // if news article not found
+        if(!($news_item)){
+            // set response as an error
+            return Response()->json(['message' => "No news article with id: '$newsId' could be found in category id: '$catId'",'code' => 404],404);
+        }
+
+        // get title and descriptions
+        $title              = $request->get('title');
+        $content            = $request->get('content');
+        $image              = $request->get('image');
+        $likes              = $request->get('likes');
+        $dislikes           = $request->get('dislikes');
+
+        // set the new details presenet
+        $news_item->title    = ($title) ? $title : $category->title;
+        $news_item->content  = ($content) ? $content : $category->content;
+        $news_item->image    = ($image) ? $image : $category->image;
+        $news_item->likes    = ($likes) ? $likes : $category->likes;
+        $news_item->dislikes = ($dislikes) ? $dislikes : $category->dislikes;
+
+        // save the news item
+        $news_item->save();
+
+         // set response as json with data
+        return response()->json(['message' => "News item successfully updated",'code' => 200],200);
     }
 
     /**
@@ -134,8 +171,30 @@ class CategoryNewsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($catId,$newsId)
     {
-        //
+        // find by $catId
+        $category = Category::find($catId);
+
+        // if no category found
+        if(!$category){
+            // set response as an error
+            return Response()->json(['message' => 'The category could not be found','code' => 404],404);
+        }
+
+        // find news article from news
+        $news_item = $category->news->find($newsId);
+
+        // if news article not found
+        if(!($news_item)){
+            // set response as an error
+            return Response()->json(['message' => "No news article with id: '$newsId' could be found in category id: '$catId'",'code' => 404],404);
+        }
+
+        // remove the news item if all alright
+        $news_item->delete();
+
+         // set success response as json with data
+        return Response()->json(['message' => 'News article successfully deleted','code' => 200],200);
     }
 }

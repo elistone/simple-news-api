@@ -21,12 +21,12 @@ class NewsSeed extends Seeder
         for($i=0; $i<30; $i++){
             News::Create
             ([
-                'title' => $faker->sentence(),
+                'title' => $faker->realText(255),
                 'content' => $faker->realText(),
                 'image' => $faker->imageUrl(),
-                'category_id' => $faker->numberBetween(1,3),
-                'likes' => $faker->randomNumber(),
-                'dislikes' => $faker->randomNumber()
+                'category_id' => $faker->numberBetween(1,4),
+                'likes' => $faker->numberBetween(0,200),
+                'dislikes' => $faker->numberBetween(0,100)
             ]);
         }
     }

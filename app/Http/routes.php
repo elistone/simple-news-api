@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () { return view('welcome');});
+Route::get('/', function () { return view('instructions');});
 
 //setup resource route to controllers
 Route::resource('category','CategoryController',['except' => ['create','edit']]);
