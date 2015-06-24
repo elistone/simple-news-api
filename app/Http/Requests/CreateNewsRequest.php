@@ -31,8 +31,8 @@ class CreateNewsRequest extends Request
             'title' => 'string|required|max:255',
             'content' => 'string|max:65535|required',
             'image' => 'string|max:255|url|required',
-            'likes' => 'integer|max:11|required',
-            'dislikes' => 'integer|max:11|required',
+            'likes' => 'integer|max:99999999999|required',
+            'dislikes' => 'integer|max:99999999999|required',
         ];
     }
 
